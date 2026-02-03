@@ -16,7 +16,7 @@ public class Ordine {
     private LocalDateTime oraOrdine;
 //    private double totale;
 
-    public Ordine(List<Menu> elementiMenu, int nOrdine, StatoOrdine status, int nCoperti,double coperto) {
+    public Ordine(List<Menu> elementiMenu, int nOrdine, StatoOrdine status, int nCoperti) {
         this.elementiMenu = elementiMenu;
         this.nOrdine = nOrdine;
         this.statoOrdine = status;
@@ -24,7 +24,9 @@ public class Ordine {
         this.oraOrdine = LocalDateTime.now();
 //        this.totale = elementiMenu.stream().mapToDouble(Menu::getPrezzo).sum()+ (nCoperti*coperto);
     }
-
+    public double getTotale(int nCoperti, double prezzoCoperto){
+        return getElementiMenu().stream().mapToDouble(elemento-> elemento.getPrezzo()).sum()+(nCoperti*prezzoCoperto);
+    }
 //    toString
 
 

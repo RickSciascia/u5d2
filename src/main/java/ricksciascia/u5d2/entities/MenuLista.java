@@ -7,16 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @Getter
 @Setter
 public class MenuLista {
-    private ArrayList<Pizza> pizze;
-    private ArrayList<Drink> drinks;
-    private ArrayList<Topping> ingredienti;
+    private List<Pizza> pizze;
+    private List<Drink> drinks;
+    private List<Topping> ingredienti;
 
-    public MenuLista(ArrayList<Pizza> pizze, ArrayList<Drink> drinks, ArrayList <Topping> ingredienti){
+    public MenuLista(List<Pizza> pizze, List<Drink> drinks, List <Topping> ingredienti){
         this.pizze = pizze;
         this.drinks = drinks;
         this.ingredienti = ingredienti;

@@ -78,20 +78,20 @@ public class Config {
         return new Topping("Salsiccia", 300, (double)2.0F);
     }
 
-    @Bean
-    public ArrayList<Pizza> listaPizze() {
-        return new ArrayList<>(Arrays.asList(getPizza(),getBoscaiola()));
-    }
-
-    @Bean
-    public ArrayList<Drink> listaDrink() {
-        return new ArrayList<>(Arrays.asList(getAcqua(),getCocaCola()));
-    }
-
-    @Bean
-    public ArrayList<Topping> listaIngredienti() {
-        return new ArrayList<>(Arrays.asList(getSalsiccia(),getFunghi(),getMozzarella(),getPomodoro()));
-    }
+//    @Bean
+//    public ArrayList<Pizza> listaPizze() {
+//        return new ArrayList<>(Arrays.asList(getPizza(),getBoscaiola()));
+//    }
+//
+//    @Bean
+//    public ArrayList<Drink> listaDrink() {
+//        return new ArrayList<>(Arrays.asList(getAcqua(),getCocaCola()));
+//    }
+//
+//    @Bean
+//    public ArrayList<Topping> listaIngredienti() {
+//        return new ArrayList<>(Arrays.asList(getSalsiccia(),getFunghi(),getMozzarella(),getPomodoro()));
+//    }
 
     @Bean
     public double getCoperto(@Value("${costo.coperto}") double coperto) {
