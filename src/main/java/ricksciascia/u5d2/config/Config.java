@@ -1,0 +1,91 @@
+package ricksciascia.u5d2.config;
+
+import java.util.ArrayList;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import ricksciascia.u5d2.entities.Drink;
+import ricksciascia.u5d2.entities.MenuLista;
+import ricksciascia.u5d2.entities.Pizza;
+import ricksciascia.u5d2.entities.Topping;
+
+@Configuration
+public class Config {
+    @Bean(
+            name = {"getPizza"}
+    )
+    public Pizza getPizza() {
+        ArrayList<Topping> listaIng = new ArrayList();
+        listaIng.add(this.getPomodoro());
+        listaIng.add(this.getMozzarella());
+        return new Pizza("Pizza Margherita", 800, (double)4.0F, listaIng);
+    }
+
+    @Bean(
+            name = {"getBoscaiola"}
+    )
+    public Pizza getBoscaiola() {
+        ArrayList<Topping> listaIng = new ArrayList();
+        listaIng.add(this.getFunghi());
+        listaIng.add(this.getSalsiccia());
+        listaIng.add(this.getMozzarella());
+        return new Pizza("Pizza Boscaiola", 1400, (double)8.0F, listaIng);
+    }
+
+    @Bean(
+            name = {"getAcqua"}
+    )
+    public Drink getAcqua() {
+        return new Drink("Acqua 500ml", 0, (double)1.5F);
+    }
+
+    @Bean(
+            name = {"getCocaCola"}
+    )
+    public Drink getCocaCola() {
+        return new Drink("Coca-Cola 500ml", 250, (double)3.5F);
+    }
+
+    @Bean(
+            name = {"getPomodoro"}
+    )
+    public Topping getPomodoro() {
+        return new Topping("Pomodoro", 150, (double)0.5F);
+    }
+
+    @Bean(
+            name = {"getMozzarella"}
+    )
+    public Topping getMozzarella() {
+        return new Topping("Mozzarella", 350, (double)0.5F);
+    }
+
+    @Bean(
+            name = {"getFunghi"}
+    )
+    public Topping getFunghi() {
+        return new Topping("Funghi", 150, (double)1.5F);
+    }
+
+    @Bean(
+            name = {"getSalsiccia"}
+    )
+    public Topping getSalsiccia() {
+        return new Topping("Salsiccia", 300, (double)2.0F);
+    }
+
+    @Bean
+    public MenuLista menu() {
+        ArrayList<Pizza> pizze = new ArrayList();
+        pizze.add(this.getPizza());
+        pizze.add(this.getBoscaiola());
+        ArrayList<Drink> drink = new ArrayList();
+        drink.add(this.getAcqua());
+        drink.add(this.getCocaCola());
+        ArrayList<Topping> ingredienti = new ArrayList();
+        ingredienti.add(this.getPomodoro());
+        ingredienti.add(this.getMozzarella());
+        ingredienti.add(this.getFunghi());
+        ingredienti.add(this.getSalsiccia());
+        return new MenuLista(pizze, drink, ingredienti);
+    }
+}
