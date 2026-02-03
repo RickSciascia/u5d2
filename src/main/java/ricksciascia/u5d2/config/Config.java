@@ -1,14 +1,19 @@
 package ricksciascia.u5d2.config;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import ricksciascia.u5d2.entities.Drink;
 import ricksciascia.u5d2.entities.MenuLista;
 import ricksciascia.u5d2.entities.Pizza;
 import ricksciascia.u5d2.entities.Topping;
 
 @Configuration
+@PropertySource("application.properties")
 public class Config {
     @Bean(
             name = {"getPizza"}
@@ -74,18 +79,38 @@ public class Config {
     }
 
     @Bean
-    public MenuLista menu() {
-        ArrayList<Pizza> pizze = new ArrayList();
-        pizze.add(this.getPizza());
-        pizze.add(this.getBoscaiola());
-        ArrayList<Drink> drink = new ArrayList();
-        drink.add(this.getAcqua());
-        drink.add(this.getCocaCola());
-        ArrayList<Topping> ingredienti = new ArrayList();
-        ingredienti.add(this.getPomodoro());
-        ingredienti.add(this.getMozzarella());
-        ingredienti.add(this.getFunghi());
-        ingredienti.add(this.getSalsiccia());
-        return new MenuLista(pizze, drink, ingredienti);
+    public ArrayList<Pizza> listaPizze() {
+        return new ArrayList<>(Arrays.asList(getPizza(),getBoscaiola()));
     }
+
+    @Bean
+    public ArrayList<Drink> listaDrink() {
+        return new ArrayList<>(Arrays.asList(getAcqua(),getCocaCola()));
+    }
+
+    @Bean
+    public ArrayList<Topping> listaIngredienti() {
+        return new ArrayList<>(Arrays.asList(getSalsiccia(),getFunghi(),getMozzarella(),getPomodoro()));
+    }
+
+    @Bean
+    public double getCoperto(@Value("${costo.coperto}") double coperto) {
+        return coperto;
+    }
+
+//    @Bean
+//    public MenuLista menu() {
+//        ArrayList<Pizza> pizze = new ArrayList();
+//        pizze.add(this.getPizza());
+//        pizze.add(this.getBoscaiola());
+//        ArrayList<Drink> drink = new ArrayList();
+//        drink.add(this.getAcqua());
+//        drink.add(this.getCocaCola());
+//        ArrayList<Topping> ingredienti = new ArrayList();
+//        ingredienti.add(this.getPomodoro());
+//        ingredienti.add(this.getMozzarella());
+//        ingredienti.add(this.getFunghi());
+//        ingredienti.add(this.getSalsiccia());
+//        return new MenuLista(pizze, drink, ingredienti);
+//    }
 }

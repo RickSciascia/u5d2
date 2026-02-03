@@ -12,6 +12,6 @@ public class Pizza extends Menu {
 
     public String toString() {
         String var10000 = super.getNome();
-        return "Pizza{ " + var10000 + " " + super.getCalorie() + " " + super.getPrezzo() + " listaIngredienti=" + String.valueOf(this.listaIngredienti) + "}";
+        return "Pizza: " + var10000 + " " + super.getCalorie() + " " + super.getPrezzo() + " lista Ingredienti: " + String.valueOf(this.listaIngredienti) + " ";
     }
 }
